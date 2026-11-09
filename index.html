@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#142b2b">
+<title>Kalendabraxas · Calendar of Abraxas</title>
+<style>
+:root{color-scheme:light;--ink:#183332;--muted:#65716a;--gold:#946f35;--line:#d8d9cb;--paper:#f6f4eb;--water:#377b86;--air:#6f8097;--fire:#b56745;--earth:#728054}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #b88845;outline-offset:3px}header{background:#142b2b;color:#f6f0db;padding:38px max(24px,calc((100% - 1120px)/2)) 76px;position:relative;overflow:hidden}header:after{content:'☉';position:absolute;right:4%;top:-90px;font-size:340px;line-height:1;color:#e2c58b;opacity:.055;pointer-events:none}.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--gold);font-weight:650}header .eyebrow{color:#cbb27e}h1{font:clamp(40px,6vw,65px)/1.1 Georgia,serif;margin:14px 0 12px;font-weight:400;letter-spacing:-.03em}header p{color:#b8c6bd;margin:0;max-width:570px}main{max-width:1120px;margin:-38px auto 0;padding:0 24px 36px;position:relative}button{border:1px solid var(--line);border-radius:5px;background:transparent;color:var(--ink);padding:9px 15px;transition:background .15s}button:hover{background:#e8e9de}button:disabled{opacity:.4;cursor:not-allowed}.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}.toolbar button{background:#fbfaf5}.toolbar .eyebrow{color:#e1d8bd}.panels{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{background:#fffefa;border:1px solid var(--line);border-radius:9px;padding:26px;box-shadow:0 6px 20px #152d2910}h2{font:28px/1.2 Georgia,serif;font-weight:400;margin:8px 0 5px}.subtitle{color:var(--muted);font-size:13px;margin:0 0 24px}.fields{display:grid;grid-template-columns:70px 1fr 100px;gap:10px}label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:6px}input,select{width:100%;height:47px;padding:8px 9px;color:var(--ink);background:#f8f8f0;border:1px solid #cbcec1;border-radius:4px}input[type=number]{appearance:textfield;min-width:0}input::-webkit-inner-spin-button{appearance:none}.special-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.special-buttons button{font-size:12px;padding:7px 11px}.special-buttons button[aria-pressed=true]{color:#fff9e7;background:var(--ink);border-color:var(--ink)}.hint{font-size:12px;color:var(--muted);margin:15px 0 0;min-height:20px}.summary{margin:23px 0 0;border-top:1px solid var(--line);padding-top:18px;font:20px/1.4 Georgia,serif;min-height:48px}.status{color:#a23d30;margin:10px 0;min-height:24px;font-size:13px}.result{margin-top:6px}.result-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:24px 0 16px}.result-head h2{margin:0;font-size:26px}.ordinal{font-size:12px;color:var(--muted);text-align:right}.cycles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.cycle{padding:21px 22px;background:#eeeee3;border-top:3px solid var(--gold);border-radius:3px}.cycle:nth-child(1){border-color:var(--water)}.cycle:nth-child(2){border-color:var(--fire)}.cycle:nth-child(3){border-color:var(--earth)}.cycle-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em}.glyph{font:27px Georgia,serif;color:var(--gold)}.cycle h3{font:27px/1.2 Georgia,serif;margin:10px 0 7px;font-weight:400}.cycle p{font-size:12px;color:var(--muted);margin:0}.meter{height:3px;background:#d5d9ca;margin-top:20px}.meter span{display:block;height:100%;background:var(--ink)}.daily{background:var(--ink);color:#f6f0db;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 26px;border-radius:6px;margin-top:18px}.daily .eyebrow{color:#cbb27e}.daily-value{font:23px/1.4 Georgia,serif}.daily p{font-size:12px;color:#b8c6bd;margin:5px 0 0}.special-note{border:1px solid #cab583;background:#f0e8d6;padding:22px;border-radius:6px;margin-top:18px}.special-note h3{font:26px Georgia,serif;margin:0 0 8px}.special-note p{margin:0;color:#665d47}details{margin-top:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;color:var(--muted);font-size:13px}summary{cursor:pointer;color:var(--ink)}.rules{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:10px 0}.rules p{margin:12px 0}footer{display:flex;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted);margin-top:22px} [hidden]{display:none!important}
+@media(max-width:760px){header{padding:28px 22px 72px}main{padding:0 16px 25px}.panels{grid-template-columns:1fr;gap:14px}.panel{padding:21px}.cycles{gap:9px}.cycle{padding:16px 12px}.cycle h3{font-size:22px}.cycle-top{letter-spacing:0;font-size:10px}.glyph{font-size:21px}.daily{display:block;padding:21px}.daily-value{margin-top:10px}.rules{grid-template-columns:1fr;gap:0}.result-head{align-items:start}.toolbar .eyebrow{font-size:10px}footer{flex-wrap:wrap}}@media(max-width:380px){.fields{grid-template-columns:58px 1fr 81px}.panel{padding:17px}.cycle h3{font-size:19px}.cycle{padding:12px 9px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">The Calendar of Abraxas</div><h1>Kalendabraxas</h1><p>One year. Three intertwined cycles.<br>Explore the correspondence between sacred time and the Gregorian calendar.</p></header>
+<main>
+<div class="toolbar"><span class="eyebrow">A correspondence of days</span><button id="today" type="button">Return to today ↗</button></div>
+<div class="panels">
+<section class="panel" aria-labelledby="greg-title"><div class="eyebrow">Civil calendar</div><h2 id="greg-title">Gregorian</h2><p class="subtitle">Change any field to convert automatically.</p><div class="fields"><div><label for="gd">Day</label><select id="gd"></select></div><div><label for="gm">Month</label><select id="gm"></select></div><div><label for="gy">Year · CE</label><input id="gy" type="number" min="1" max="9999" step="1" inputmode="numeric"></div></div><p class="hint" id="greg-hint">Gregorian calendar</p><div class="summary" id="greg-summary" aria-live="polite"></div></section>
+<section class="panel" aria-labelledby="abra-title"><div class="eyebrow">Age of Abraxas</div><h2 id="abra-title">Kalendabraxas</h2><p class="subtitle">Thirteen months, each of twenty-eight days.</p><div class="fields"><div><label for="ad">Day</label><select id="ad"></select></div><div><label for="am">Month</label><select id="am"></select></div><div><label for="ay">Year · AA</label><input id="ay" type="number" min="-335" max="9664" step="1" inputmode="numeric"></div></div><div class="special-buttons"><button id="abra" type="button" aria-pressed="false">Day of Abraxas</button><button id="hermes" type="button" aria-pressed="false">Day of Hermes</button></div><p class="hint" id="abra-hint"></p><div class="summary" id="abra-summary" aria-live="polite"></div></section>
+</div>
+<div class="status" id="error" role="alert"></div>
+<section class="result" aria-labelledby="cycles-title"><div class="result-head"><h2 id="cycles-title">The cycles of the year</h2><span class="ordinal" id="ordinal"></span></div><div id="regular"><div class="cycles"><article class="cycle"><div class="cycle-top">Season · Element <span class="glyph" id="element-glyph"></span></div><h3 id="season"></h3><p id="season-day"></p><div class="meter"><span id="season-progress"></span></div></article><article class="cycle"><div class="cycle-top">Period · Planet <span class="glyph" id="planet-glyph"></span></div><h3 id="period"></h3><p id="period-day"></p><div class="meter"><span id="period-progress"></span></div></article><article class="cycle"><div class="cycle-top">Month · Arcanum <span class="glyph">✧</span></div><h3 id="month"></h3><p id="month-day"></p><div class="meter"><span id="month-progress"></span></div></article></div><div class="daily"><div><div class="eyebrow">Daily correspondence</div><p>The element, planet and arcanum cycling with each ordinary day.</p></div><div class="daily-value" id="daily"></div></div></div><div class="special-note" id="special" hidden><h3 id="special-title"></h3><p id="special-description"></p></div></section>
+<details><summary>How to read this calendar</summary><div class="rules"><div><p>Each year begins on <strong>December 25</strong>. Its 364 ordinary days form four seasons of 91 days, seven planetary periods of 52 days and thirteen months of 28 days. The last ordinary day is December 23.</p><p><strong>December 24, the Day of Abraxas,</strong> stands outside all three cycles and the daily correspondence. Its year is the Abraxas year that is ending.</p><p>In a Gregorian leap year, <strong>June 24 is the Day of Hermes</strong>. February 29 remains an ordinary day; the count pauses only on June 24. Hermes also stands outside every cycle.</p></div><div><p>The daily correspondence advances one element, one planet and one arcanum per ordinary day, beginning with <strong>Water · Sun · Magus</strong> on December 25. It resets at the start of each year; neither special day advances it.</p><p><strong>Year 1 AA</strong> begins on December 25, 336 CE. The year number equals the Gregorian year at the start of the Abraxas year minus 335. Earlier dates follow this arithmetic through year 0 and negative AA years.</p><p>Gregorian dates use the <strong>proleptic Gregorian calendar</strong>, for CE years 1–9999. Dates update in both directions immediately. On special days the month and day fields are blank; select a month or day to return to an ordinary date.</p></div></div></details>
+<footer><span>KA L E N D A B R A X A S · 364 + 1 (+ 1)</span><span>Self-contained · Works offline · No external dependencies</span></footer>
+</main>
+<script>
+'use strict';
+// All date arithmetic uses UTC midnight, independent of daylight-saving time.
+const DAY=86400000;
+const ELEMENTS=['Water','Air','Fire','Earth'];
+const PLANETS=['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn'];
+const ARCANA=['Magus','Priestess','Empress','Emperor','Hierophant','Lovers','Chariot','Justice','Hermit','Wheel of Fortune','Strength','Hanged Man','Death'];
+const GREG_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const EG=['🜄','🜁','🜂','🜃'],PG=['☉','☽','♂','☿','♃','♀','♄'];
+const $=id=>document.getElementById(id);
+function utc(y,m,d){const t=new Date(0);t.setUTCFullYear(y,m-1,d);t.setUTCHours(0,0,0,0);return t.getTime();}
+function leap(y){return y%4===0&&(y%100!==0||y%400===0);}
+function monthLength(y,m){return [31,leap(y)?29:28,31,30,31,30,31,31,30,31,30,31][m-1];}
+function fromGregorian(y,m,d){
+ if(!Number.isInteger(y)||y<1||y>9999||!Number.isInteger(m)||m<1||m>12||!Number.isInteger(d)||d<1||d>monthLength(y,m))throw Error('Enter a valid Gregorian date (CE 1–9999).');
+ const start=y-((m===12&&d>=25)?0:1),year=start-335;
+ if(m===12&&d===24)return {year,special:'abra'};
+ if(leap(y)&&m===6&&d===24)return {year,special:'hermes'};
+ let n=Math.round((utc(y,m,d)-utc(start,12,25))/DAY);
+ if(leap(start+1)&&utc(y,m,d)>utc(start+1,6,24))n--;
+ return {year,month:Math.floor(n/28)+1,day:n%28+1,n,special:null};
+}
+function toGregorian(year,month,day,special=null){
+ if(!Number.isInteger(year)||year< -335||year>9664)throw Error('Enter an Abraxas year from −335 to 9664.');
+ const start=year+335;let t;
+ if(special==='abra')t=utc(start+1,12,24);
+ else if(special==='hermes'){if(!leap(start+1))throw Error('This Abraxas year has no Day of Hermes.');t=utc(start+1,6,24);}
+ else{
+  if(!Number.isInteger(month)||month<1||month>13||!Number.isInteger(day)||day<1||day>28)throw Error('Choose a month and a day from 1 to 28.');
+  t=utc(start,12,25)+((month-1)*28+day-1)*DAY;
+  if(leap(start+1)&&t>=utc(start+1,6,24))t+=DAY;
+ }
+ const dt=new Date(t),y=dt.getUTCFullYear();
+ if(y<1||y>9999)throw Error('This date falls outside the supported Gregorian range (CE 1–9999).');
+ return {y,m:dt.getUTCMonth()+1,d:dt.getUTCDate()};
+}
+function options(el,labels,placeholder=false){el.replaceChildren();if(placeholder){const opt=new Option('—','');opt.hidden=true;el.add(opt);}labels.forEach((x,i)=>el.add(new Option(x,i+1)));}
+options($('gm'),GREG_MONTHS);options($('am'),ARCANA.map((x,i)=>`${i+1} · ${x}`),true);options($('ad'),Array.from({length:28},(_,i)=>i+1),true);
+let selectedSpecial=null,lastRegular={month:1,day:1};
+function fillGregorianDays(y,m,day){options($('gd'),Array.from({length:monthLength(y,m)},(_,i)=>i+1));$('gd').value=Math.min(day,monthLength(y,m));}
+function render(g){
+ const a=fromGregorian(g.y,g.m,g.d);selectedSpecial=a.special;
+ fillGregorianDays(g.y,g.m,g.d);$('gm').value=g.m;$('gy').value=g.y;$('ay').value=a.year;
+ if(!a.special)lastRegular={month:a.month,day:a.day};
+ $('am').value=a.special?'':a.month;$('ad').value=a.special?'':a.day;
+ $('abra').setAttribute('aria-pressed',String(a.special==='abra'));$('hermes').setAttribute('aria-pressed',String(a.special==='hermes'));
+ $('hermes').disabled=!leap(a.year+336)||a.year+336>9999;
+ $('abra').disabled=a.year+336>9999;
+ $('hermes').title=$('hermes').disabled?'No Day of Hermes within the supported dates of this year':`June 24, ${a.year+336} CE`;
+ $('greg-hint').textContent=`${leap(g.y)?'Leap':'Common'} Gregorian year · ${leap(g.y)?366:365} days`;
+ $('abra-hint').textContent=`Year begins December 25, ${a.year+335} CE · ${leap(a.year+336)?'Includes the Day of Hermes':'No Day of Hermes'}`;
+ $('greg-summary').textContent=`${g.d} ${GREG_MONTHS[g.m-1]} ${g.y} CE`;
+ const name=a.special==='abra'?'Day of Abraxas':a.special==='hermes'?'Day of Hermes':`${a.day} ${ARCANA[a.month-1]}`;
+ $('abra-summary').textContent=`${name} · ${a.year} AA`;
+ $('regular').hidden=!!a.special;$('special').hidden=!a.special;
+ $('ordinal').textContent=a.special?'Outside the ordinary cycles':`Ordinary day ${a.n+1} of 364`;
+ if(a.special){$('special-title').textContent=name;$('special-description').textContent=a.special==='abra'?'The day outside time, closing this Abraxas year. The next day begins a new year with Water · Sun · Magus.':'The leap day of this Abraxas year. All cycles pause today and resume tomorrow.';}
+ else{
+  for(const [key,names,len] of [['season',ELEMENTS,91],['period',PLANETS,52],['month',ARCANA,28]]){
+   $(key).textContent=names[Math.floor(a.n/len)];$(key+'-day').textContent=`Day ${a.n%len+1} of ${len} · ${Math.floor(a.n/len)+1} of ${names.length}`;$(key+'-progress').style.width=`${(a.n%len+1)/len*100}%`;
+  }
+  $('element-glyph').textContent=EG[Math.floor(a.n/91)];$('planet-glyph').textContent=PG[Math.floor(a.n/52)];
+  $('daily').textContent=`${ELEMENTS[a.n%4]} · ${PLANETS[a.n%7]} · ${ARCANA[a.n%13]}`;
+ }
+ $('error').textContent='';
+}
+function attempt(fn){try{fn();}catch(e){$('error').textContent=e.message;}}
+function readYear(id){const el=$(id);if(el.value.trim()===''||!el.validity.valid)throw Error(id==='gy'?'Enter a whole Gregorian year from 1 to 9999.':'Enter a whole Abraxas year from −335 to 9664.');return Number(el.value);}
+function gregChanged(){attempt(()=>{const y=readYear('gy'),m=Number($('gm').value),d=Math.min(Number($('gd').value),monthLength(y,m));render({y,m,d});});}
+function abraChanged(event){attempt(()=>{const year=readYear('ay');let special=selectedSpecial;
+ if(event&&['ad','am'].includes(event.target.id)){special=null;}
+ const month=Number($('am').value)||lastRegular.month,day=Number($('ad').value)||lastRegular.day;
+ // Changing a special date's year preserves it, unless Hermes is unavailable.
+ if(special==='hermes'&&!leap(year+336))special=null;
+ render(toGregorian(year,month,day,special));});}
+['gd','gm','gy'].forEach(id=>$(id).addEventListener('input',gregChanged));
+['ad','am','ay'].forEach(id=>$(id).addEventListener('input',abraChanged));
+['abra','hermes'].forEach(id=>$(id).addEventListener('click',()=>attempt(()=>render(toGregorian(readYear('ay'),1,1,id)))));
+function today(){const now=new Date();render({y:now.getFullYear(),m:now.getMonth()+1,d:now.getDate()});}
+$('today').addEventListener('click',today);today();
+</script>
+</body>
+</html>
