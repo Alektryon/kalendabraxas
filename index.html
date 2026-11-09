@@ -17,11 +17,11 @@
 <div class="toolbar"><span class="eyebrow">A correspondence of days</span><button id="today" type="button">Return to today ↗</button></div>
 <div class="panels">
 <section class="panel" aria-labelledby="greg-title"><div class="eyebrow">Civil calendar</div><h2 id="greg-title">Gregorian</h2><p class="subtitle">Change any field to convert automatically.</p><div class="fields"><div><label for="gd">Day</label><select id="gd"></select></div><div><label for="gm">Month</label><select id="gm"></select></div><div><label for="gy">Year · CE</label><input id="gy" type="number" min="1" max="9999" step="1" inputmode="numeric"></div></div><p class="hint" id="greg-hint">Gregorian calendar</p><div class="summary" id="greg-summary" aria-live="polite"></div></section>
-<section class="panel" aria-labelledby="abra-title"><div class="eyebrow">Age of Abraxas</div><h2 id="abra-title">Kalendabraxas</h2><p class="subtitle">Thirteen months, each of twenty-eight days.</p><div class="fields"><div><label for="ad">Day</label><select id="ad"></select></div><div><label for="am">Month</label><select id="am"></select></div><div><label for="ay">Year · AA</label><input id="ay" type="number" min="-335" max="9664" step="1" inputmode="numeric"></div></div><div class="special-buttons"><button id="abra" type="button" aria-pressed="false">Day of Abraxas</button><button id="hermes" type="button" aria-pressed="false">Day of Hermes</button></div><p class="hint" id="abra-hint"></p><div class="summary" id="abra-summary" aria-live="polite"></div></section>
+<section class="panel" aria-labelledby="abra-title"><div class="eyebrow">Age of Abraxas</div><h2 id="abra-title">Kalendabraxas</h2><p class="subtitle">Thirteen months, each of twenty-eight days.</p><div class="fields"><div><label for="ad">Day</label><select id="ad"></select></div><div><label for="am">Month</label><select id="am"></select></div><div><label for="ay">Year · AA</label><input id="ay" type="number" min="-273" max="9726" step="1" inputmode="numeric"></div></div><div class="special-buttons"><button id="abra" type="button" aria-pressed="false">Day of Abraxas</button><button id="hermes" type="button" aria-pressed="false">Day of Hermes</button></div><p class="hint" id="abra-hint"></p><div class="summary" id="abra-summary" aria-live="polite"></div></section>
 </div>
 <div class="status" id="error" role="alert"></div>
 <section class="result" aria-labelledby="cycles-title"><div class="result-head"><h2 id="cycles-title">The cycles of the year</h2><span class="ordinal" id="ordinal"></span></div><div id="regular"><div class="cycles"><article class="cycle"><div class="cycle-top">Season · Element <span class="glyph" id="element-glyph"></span></div><h3 id="season"></h3><p id="season-day"></p><div class="meter"><span id="season-progress"></span></div></article><article class="cycle"><div class="cycle-top">Period · Planet <span class="glyph" id="planet-glyph"></span></div><h3 id="period"></h3><p id="period-day"></p><div class="meter"><span id="period-progress"></span></div></article><article class="cycle"><div class="cycle-top">Month · Arcanum <span class="glyph">✧</span></div><h3 id="month"></h3><p id="month-day"></p><div class="meter"><span id="month-progress"></span></div></article></div><div class="daily"><div><div class="eyebrow">Daily correspondence</div><p>The element, planet and arcanum cycling with each ordinary day.</p></div><div class="daily-value" id="daily"></div></div></div><div class="special-note" id="special" hidden><h3 id="special-title"></h3><p id="special-description"></p></div></section>
-<details><summary>How to read this calendar</summary><div class="rules"><div><p>Each year begins on <strong>December 25</strong>. Its 364 ordinary days form four seasons of 91 days, seven planetary periods of 52 days and thirteen months of 28 days. The last ordinary day is December 23.</p><p><strong>December 24, the Day of Abraxas,</strong> stands outside all three cycles and the daily correspondence. Its year is the Abraxas year that is ending.</p><p>In a Gregorian leap year, <strong>June 24 is the Day of Hermes</strong>. February 29 remains an ordinary day; the count pauses only on June 24. Hermes also stands outside every cycle.</p></div><div><p>The daily correspondence advances one element, one planet and one arcanum per ordinary day, beginning with <strong>Water · Sun · Magus</strong> on December 25. It resets at the start of each year; neither special day advances it.</p><p><strong>Year 1 AA</strong> begins on December 25, 336 CE. The year number equals the Gregorian year at the start of the Abraxas year minus 335. Earlier dates follow this arithmetic through year 0 and negative AA years.</p><p>Gregorian dates use the <strong>proleptic Gregorian calendar</strong>, for CE years 1–9999. Dates update in both directions immediately. On special days the month and day fields are blank; select a month or day to return to an ordinary date.</p></div></div></details>
+<details><summary>How to read this calendar</summary><div class="rules"><div><p>Each year begins on <strong>December 25</strong>. Its 364 ordinary days form four seasons of 91 days, seven planetary periods of 52 days and thirteen months of 28 days. The last ordinary day is December 23.</p><p><strong>December 24, the Day of Abraxas,</strong> stands outside all three cycles and the daily correspondence. Its year is the Abraxas year that is ending.</p><p>In a Gregorian leap year, <strong>June 24 is the Day of Hermes</strong>. February 29 remains an ordinary day; the count pauses only on June 24. Hermes also stands outside every cycle.</p></div><div><p>The daily correspondence advances one element, one planet and one arcanum per ordinary day, beginning with <strong>Water · Sun · Magus</strong> on December 25. It resets at the start of each year; neither special day advances it.</p><p><strong>Year 1 AA</strong> begins on December 25, 274 CE. The year number equals the Gregorian year at the start of the Abraxas year minus 273. Earlier dates follow this arithmetic through year 0 and negative AA years.</p><p>Gregorian dates use the <strong>proleptic Gregorian calendar</strong>, for CE years 1–9999. Dates update in both directions immediately. On special days the month and day fields are blank; select a month or day to return to an ordinary date.</p></div></div></details>
 <footer><span>KA L E N D A B R A X A S · 364 + 1 (+ 1)</span><span>Self-contained · Works offline · No external dependencies</span></footer>
 </main>
 <script>
@@ -39,7 +39,7 @@ function leap(y){return y%4===0&&(y%100!==0||y%400===0);}
 function monthLength(y,m){return [31,leap(y)?29:28,31,30,31,30,31,31,30,31,30,31][m-1];}
 function fromGregorian(y,m,d){
  if(!Number.isInteger(y)||y<1||y>9999||!Number.isInteger(m)||m<1||m>12||!Number.isInteger(d)||d<1||d>monthLength(y,m))throw Error('Enter a valid Gregorian date (CE 1–9999).');
- const start=y-((m===12&&d>=25)?0:1),year=start-335;
+ const start=y-((m===12&&d>=25)?0:1),year=start-273;
  if(m===12&&d===24)return {year,special:'abra'};
  if(leap(y)&&m===6&&d===24)return {year,special:'hermes'};
  let n=Math.round((utc(y,m,d)-utc(start,12,25))/DAY);
@@ -47,8 +47,8 @@ function fromGregorian(y,m,d){
  return {year,month:Math.floor(n/28)+1,day:n%28+1,n,special:null};
 }
 function toGregorian(year,month,day,special=null){
- if(!Number.isInteger(year)||year< -335||year>9664)throw Error('Enter an Abraxas year from −335 to 9664.');
- const start=year+335;let t;
+ if(!Number.isInteger(year)||year< -273||year>9726)throw Error('Enter an Abraxas year from −273 to 9726.');
+ const start=year+273;let t;
  if(special==='abra')t=utc(start+1,12,24);
  else if(special==='hermes'){if(!leap(start+1))throw Error('This Abraxas year has no Day of Hermes.');t=utc(start+1,6,24);}
  else{
@@ -70,11 +70,11 @@ function render(g){
  if(!a.special)lastRegular={month:a.month,day:a.day};
  $('am').value=a.special?'':a.month;$('ad').value=a.special?'':a.day;
  $('abra').setAttribute('aria-pressed',String(a.special==='abra'));$('hermes').setAttribute('aria-pressed',String(a.special==='hermes'));
- $('hermes').disabled=!leap(a.year+336)||a.year+336>9999;
- $('abra').disabled=a.year+336>9999;
- $('hermes').title=$('hermes').disabled?'No Day of Hermes within the supported dates of this year':`June 24, ${a.year+336} CE`;
+ $('hermes').disabled=!leap(a.year+274)||a.year+274>9999;
+ $('abra').disabled=a.year+274>9999;
+ $('hermes').title=$('hermes').disabled?'No Day of Hermes within the supported dates of this year':`June 24, ${a.year+274} CE`;
  $('greg-hint').textContent=`${leap(g.y)?'Leap':'Common'} Gregorian year · ${leap(g.y)?366:365} days`;
- $('abra-hint').textContent=`Year begins December 25, ${a.year+335} CE · ${leap(a.year+336)?'Includes the Day of Hermes':'No Day of Hermes'}`;
+ $('abra-hint').textContent=`Year begins December 25, ${a.year+273} CE · ${leap(a.year+274)?'Includes the Day of Hermes':'No Day of Hermes'}`;
  $('greg-summary').textContent=`${g.d} ${GREG_MONTHS[g.m-1]} ${g.y} CE`;
  const name=a.special==='abra'?'Day of Abraxas':a.special==='hermes'?'Day of Hermes':`${a.day} ${ARCANA[a.month-1]}`;
  $('abra-summary').textContent=`${name} · ${a.year} AA`;
@@ -91,13 +91,13 @@ function render(g){
  $('error').textContent='';
 }
 function attempt(fn){try{fn();}catch(e){$('error').textContent=e.message;}}
-function readYear(id){const el=$(id);if(el.value.trim()===''||!el.validity.valid)throw Error(id==='gy'?'Enter a whole Gregorian year from 1 to 9999.':'Enter a whole Abraxas year from −335 to 9664.');return Number(el.value);}
+function readYear(id){const el=$(id);if(el.value.trim()===''||!el.validity.valid)throw Error(id==='gy'?'Enter a whole Gregorian year from 1 to 9999.':'Enter a whole Abraxas year from −273 to 9726.');return Number(el.value);}
 function gregChanged(){attempt(()=>{const y=readYear('gy'),m=Number($('gm').value),d=Math.min(Number($('gd').value),monthLength(y,m));render({y,m,d});});}
 function abraChanged(event){attempt(()=>{const year=readYear('ay');let special=selectedSpecial;
  if(event&&['ad','am'].includes(event.target.id)){special=null;}
  const month=Number($('am').value)||lastRegular.month,day=Number($('ad').value)||lastRegular.day;
  // Changing a special date's year preserves it, unless Hermes is unavailable.
- if(special==='hermes'&&!leap(year+336))special=null;
+ if(special==='hermes'&&!leap(year+274))special=null;
  render(toGregorian(year,month,day,special));});}
 ['gd','gm','gy'].forEach(id=>$(id).addEventListener('input',gregChanged));
 ['ad','am','ay'].forEach(id=>$(id).addEventListener('input',abraChanged));
