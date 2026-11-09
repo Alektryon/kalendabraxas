@@ -80,7 +80,7 @@ function render(g){
  $('abra-summary').textContent=`${name} · ${a.year} AA`;
  $('regular').hidden=!!a.special;$('special').hidden=!a.special;
  $('ordinal').textContent=a.special?'Outside the ordinary cycles':`Ordinary day ${a.n+1} of 364`;
- if(a.special){$('special-title').textContent=name;$('special-description').textContent=a.special==='abra'?'The day outside time, closing this Abraxas year. The next day begins a new year with Water · Sun · Magus.':'The leap day of this Abraxas year. All cycles pause today and resume tomorrow.';}
+ if(a.special){$('special-title').textContent=name;$('special-description').textContent=a.special==='abra'?'The Day Outside Time, connecting Death (13th month) with a New Beginning (1st month, Magus).':'The leap day, landing at the center of the period of Mercury. Thus the day of Hermes, the Messenger.';}
  else{
   for(const [key,names,len] of [['season',ELEMENTS,91],['period',PLANETS,52],['month',ARCANA,28]]){
    $(key).textContent=names[Math.floor(a.n/len)];$(key+'-day').textContent=`Day ${a.n%len+1} of ${len} · ${Math.floor(a.n/len)+1} of ${names.length}`;$(key+'-progress').style.width=`${(a.n%len+1)/len*100}%`;
