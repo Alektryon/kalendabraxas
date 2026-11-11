@@ -1,5 +1,5 @@
-## Kalendabraxas
+## Sol Invictus
 
-The Calendar of Abraxas, by Luís Gonçalves.<br>
+Calendar of the Unconquered Sun, by Luís Gonçalves<br>
 <br>
 Vibe coded with [ChatGPT](https://chatgpt.com/)
