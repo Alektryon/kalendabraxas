@@ -72,8 +72,12 @@ input::-webkit-inner-spin-button { appearance: none; }
 .glyph { font: 27px Georgia, serif; color: var(--gold); }
 .cycle h3 { font: 400 27px/1.2 Georgia, serif; margin: 10px 0 7px; }
 .cycle p { font-size: 12px; color: var(--muted); margin: 0; }
-.meter { height: 3px; background: #d9c9a6; margin-top: 20px; }
-.meter span { display: block; height: 100%; background: #9c742b; }
+input.meter { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 24px; margin: 9px 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; cursor: pointer; }
+input.meter::-webkit-slider-runnable-track { height: 3px; background: linear-gradient(to right, #9c742b var(--progress, 0%), #d9c9a6 var(--progress, 0%)); border-radius: 2px; }
+input.meter::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5.5px; border: 2px solid #fff5dc; border-radius: 50%; background: #9c742b; box-shadow: 0 0 0 1px #9c742b; }
+input.meter::-moz-range-track { height: 3px; background: #d9c9a6; border-radius: 2px; }
+input.meter::-moz-range-progress { height: 3px; background: #9c742b; }
+input.meter::-moz-range-thumb { width: 10px; height: 10px; border: 2px solid #fff5dc; border-radius: 50%; background: #9c742b; box-shadow: 0 0 0 1px #9c742b; }
 .daily { background: #332719; color: #f9e9c2; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 26px; border-radius: 6px; margin-top: 18px; border: 1px solid #85632b; }
 .daily .eyebrow { color: #dfba6b; }
 .daily-value { font: 23px/1.4 Georgia, serif; color: #f5d78d; }
@@ -157,7 +161,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; font-size: 11
 <section class="panel solar-panel" aria-labelledby="abra-title"><div class="eyebrow">Solar era</div><h2 id="abra-title">Sol Invictus</h2><p class="subtitle">Thirteen months, each of twenty-eight days.</p><div class="fields"><div><label for="ad">Day</label><select id="ad"></select></div><div><label for="am">Month</label><select id="am"></select></div><div><label for="ay">Year · SI</label><input id="ay" type="number" min="-273" max="9726" step="1" inputmode="numeric"></div></div><div class="special-buttons"><button id="abra" type="button" aria-pressed="false">Day of Abraxas</button><button id="hermes" type="button" aria-pressed="false">Day of Hermes</button></div><p class="hint" id="abra-hint"></p><div class="summary" id="abra-summary" aria-live="polite"></div></section>
 </div>
 <div class="status" id="error" role="alert"></div>
-<section class="result" aria-labelledby="cycles-title"><div class="result-head"><h2 id="cycles-title">The cycles of the year</h2><span class="ordinal" id="ordinal"></span></div><div id="regular"><div class="cycles"><article class="cycle"><div class="cycle-top">Season · Element <span class="glyph" id="element-glyph"></span></div><h3 id="season"></h3><p id="season-day"></p><div class="meter"><span id="season-progress"></span></div></article><article class="cycle"><div class="cycle-top">Period · Planet <span class="glyph" id="planet-glyph"></span></div><h3 id="period"></h3><p id="period-day"></p><div class="meter"><span id="period-progress"></span></div></article><article class="cycle"><div class="cycle-top">Month · Arcanum <span class="glyph">✧</span></div><h3 id="month"></h3><p id="month-day"></p><div class="meter"><span id="month-progress"></span></div></article></div><div class="daily"><div><div class="eyebrow">Daily correspondence</div><p>The element, planet and arcanum cycling with each ordinary day.</p></div><div class="daily-value" id="daily"></div></div></div><div class="special-note" id="special" hidden><h3 id="special-title"></h3><p id="special-description"></p></div></section>
+<section class="result" aria-labelledby="cycles-title"><div class="result-head"><h2 id="cycles-title">The cycles of the year</h2><span class="ordinal" id="ordinal"></span></div><div id="regular"><div class="cycles"><article class="cycle"><div class="cycle-top">Season · Element <span class="glyph" id="element-glyph"></span></div><h3 id="season"></h3><p id="season-day"></p><input class="meter" id="season-progress" type="range" min="1" max="91" step="1" value="1" aria-labelledby="season" aria-describedby="season-day"></article><article class="cycle"><div class="cycle-top">Period · Planet <span class="glyph" id="planet-glyph"></span></div><h3 id="period"></h3><p id="period-day"></p><input class="meter" id="period-progress" type="range" min="1" max="52" step="1" value="1" aria-labelledby="period" aria-describedby="period-day"></article><article class="cycle"><div class="cycle-top">Month · Arcanum <span class="glyph">✧</span></div><h3 id="month"></h3><p id="month-day"></p><input class="meter" id="month-progress" type="range" min="1" max="28" step="1" value="1" aria-labelledby="month" aria-describedby="month-day"></article></div><div class="daily"><div><div class="eyebrow">Daily correspondence</div><p>The element, planet and arcanum cycling with each ordinary day.</p></div><div class="daily-value" id="daily"></div></div></div><div class="special-note" id="special" hidden><h3 id="special-title"></h3><p id="special-description"></p></div></section>
 <details><summary>How to read this calendar</summary><div class="rules"><div><p>Each year begins on <strong>December 25</strong>. Its 364 ordinary days form four seasons of 91 days, seven planetary periods of 52 days and thirteen months of 28 days. The last ordinary day is December 23.</p><p><strong>December 24, the Day of Abraxas,</strong> stands outside all three cycles and the daily correspondence. Its year is the solar year that is ending.</p><p>In a Gregorian leap year, <strong>June 24 is the Day of Hermes</strong>. February 29 remains an ordinary day; the count pauses only on June 24. Hermes also stands outside every cycle.</p></div><div><p>The daily correspondence advances one element, one planet and one arcanum per ordinary day, beginning with <strong>Water · Sun · Magus</strong> on December 25. It resets at the start of each year; neither special day advances it.</p><p><strong>Year 1 SI</strong> begins on December 25, 274 CE. The year number equals the Gregorian year at the start of the solar year minus 273. SI denotes the Sol Invictus era. Earlier dates follow this arithmetic through year 0 and negative SI years.</p><p>Gregorian dates use the <strong>proleptic Gregorian calendar</strong>, for CE years 1–9999. Dates update in both directions immediately. On special days the month and day fields are blank; select a month or day to return to an ordinary date.</p></div></div></details>
 <footer><span class="footer-brand">SOL INVICTUS · 364 + 1 (+ 1)</span><span>Self-contained · Works offline · No external dependencies</span></footer>
 </main>
@@ -220,7 +224,14 @@ function render(g){
  if(a.special){$('special-title').textContent=name;$('special-description').textContent=a.special==='abra'?'The Day Outside Time, connecting Death (13th month) to a New Beginning (1st month, Magus).':'The leap year day of Hermes, the Messenger, outside of all cycles, and standing right at the center of the Solar Year.';}
  else{
   for(const [key,names,len] of [['season',ELEMENTS,91],['period',PLANETS,52],['month',ARCANA,28]]){
-   $(key).textContent=names[Math.floor(a.n/len)];$(key+'-day').textContent=`Day ${a.n%len+1} of ${len} · ${Math.floor(a.n/len)+1} of ${names.length}`;$(key+'-progress').style.width=`${(a.n%len+1)/len*100}%`;
+   $(key).textContent=names[Math.floor(a.n/len)];$(key+'-day').textContent=`Day ${a.n%len+1} of ${len} · ${Math.floor(a.n/len)+1} of ${names.length}`;const slider=$(key+'-progress'),start=Math.floor(a.n/len)*len;
+   // Restrict only the two partial solar years at the supported CE boundaries.
+   slider.min=Math.max(1,(a.year===-273?fromGregorian(1,1,1).n:0)-start+1);
+   slider.max=Math.min(len,(a.year===9726?fromGregorian(9999,12,31).n:363)-start+1);
+   slider.value=a.n%len+1;
+   slider.dataset.start=start;slider.dataset.year=a.year;
+   slider.style.setProperty('--progress',`${(Number(slider.value)-Number(slider.min))/(Number(slider.max)-Number(slider.min))*100}%`);
+   slider.setAttribute('aria-valuetext',`Day ${a.n%len+1} of ${len} in ${names[Math.floor(a.n/len)]}`);
   }
   $('element-glyph').textContent=EG[Math.floor(a.n/91)];$('planet-glyph').textContent=PG[Math.floor(a.n/52)];
   $('daily').textContent=`${ELEMENTS[a.n%4]} · ${PLANETS[a.n%7]} · ${ARCANA[a.n%13]}`;
@@ -239,6 +250,23 @@ function abraChanged(event){attempt(()=>{const year=readYear('ay');let special=s
 ['gd','gm','gy'].forEach(id=>$(id).addEventListener('input',gregChanged));
 ['ad','am','ay'].forEach(id=>$(id).addEventListener('input',abraChanged));
 ['abra','hermes'].forEach(id=>$(id).addEventListener('click',()=>attempt(()=>render(toGregorian(readYear('ay'),1,1,id)))));
+function cycleChanged(slider){
+ attempt(()=>{
+  const n=Number(slider.dataset.start)+Number(slider.value)-1;
+  render(toGregorian(Number(slider.dataset.year),Math.floor(n/28)+1,n%28+1));
+ });
+}
+['season','period','month'].forEach(key=>{
+ const slider=$(key+'-progress');
+ slider.addEventListener('input',()=>cycleChanged(slider));
+ slider.addEventListener('wheel',event=>{
+  if(!event.deltaY&&!event.deltaX)return;
+  event.preventDefault();
+  const direction=Math.sign(event.deltaY||event.deltaX);
+  slider.value=Math.max(Number(slider.min),Math.min(Number(slider.max),Number(slider.value)+direction));
+  cycleChanged(slider);
+ },{passive:false});
+});
 function today(){const now=new Date();render({y:now.getFullYear(),m:now.getMonth()+1,d:now.getDate()});}
 $('today').addEventListener('click',today);today();
 </script>
